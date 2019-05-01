@@ -224,4 +224,9 @@ public interface ICompilationAttributes {
      * @param callback ABL Class
      */
     void setCallbackClass(String callback);
+    
+    /**
+     * The
+     */
+    void setCompileClsRelativeToRoot(boolean compileClsRelativeToRoot);
 }

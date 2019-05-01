@@ -1256,5 +1256,44 @@ public class PCTCompileTest extends BuildFileTestNg {
             Assert.fail("Unable to read file", e);
         }
     }
+    
+  //.cls only
+    @Test(groups = {"v11"})
+    public void test79() {
+        configureProject(BASEDIR + "test79/build.xml");
+        executeTarget("test");
+        
+        File f = new File(BASEDIR + "test79/build/testFolder/test.r");
+        assertTrue(f.exists());
+    }
+    
+    @Test(groups = {"v11"})
+    public void test80() {
+        configureProject(BASEDIR + "test80/build.xml");
+        executeTarget("test");
+        
+        File f1 = new File(BASEDIR + "test80/build/test1.r");
+        File f2 = new File(BASEDIR + "test80/build/com/PCTCompileTest/test2.r");
+        assertTrue(f1.exists() && f2.exists());
+    }
+    
+    //.p only
+    @Test(groups = {"v11"})
+    public void test81() {
+        configureProject(BASEDIR + "test81/build.xml");
+        executeTarget("test");
+        
+        File f = new File(BASEDIR + "test81/build/testFolder/test.r");
+        assertTrue(f.exists());
+    }
+    
+    @Test(groups = {"v11"})
+    public void test82() {
+        configureProject(BASEDIR + "test82/build.xml");
+        executeTarget("test");
+        
+        File f = new File(BASEDIR + "test82/build/testFolder/test.r");
+        assertTrue(f.exists());
+    }
 
 }

@@ -60,6 +60,7 @@ PROCEDURE setOptions:
     RUN setOption IN hComp ('FULLNAMES', IF ENTRY(33, ipPrm, ';') EQ 'true' THEN '1' ELSE '0').
     RUN setOption IN hComp ('FIELDQLF', IF ENTRY(34, ipPrm, ';') EQ 'true' THEN '1' ELSE '0').
     RUN setOption IN hComp ('CALLBACKCLASS', ENTRY(35, ipPrm, ';')).
+	RUN setOption IN hComp ('CLSROOT', IF ENTRY(36, ipPrm, ';') EQ 'true' THEN '1' ELSE '0').
 
     RUN initModule IN hComp.
 

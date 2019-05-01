@@ -67,6 +67,8 @@ public class CompilationAttributes implements ICompilationAttributes {
     private String ignoredIncludes = null;
     private int fileList = 0;
     private String callback = null;
+    private boolean compileClsRelativeToRoot = true;
+    
 
     // Internal use
     private final PCT parent;
@@ -279,6 +281,11 @@ public class CompilationAttributes implements ICompilationAttributes {
     public void setCallbackClass(String callback) {
         this.callback = callback;
     }
+    
+    @Override
+    public void setCompileClsRelativeToRoot(boolean compileClsRelativeToRoot) {
+        this.compileClsRelativeToRoot = compileClsRelativeToRoot;
+    }
 
     public List<ResourceCollection> getResources() {
         return resources;
@@ -430,6 +437,10 @@ public class CompilationAttributes implements ICompilationAttributes {
 
     public String getCallbackClass() {
         return callback;
+    }
+    
+    public boolean isCompileClsRelativeToRoot() {
+        return compileClsRelativeToRoot;
     }
 
     protected void writeCompilationProcedure(File f, Charset c) {

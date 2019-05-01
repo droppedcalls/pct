@@ -120,6 +120,7 @@ DEFINE VARIABLE cIgnoredIncludes AS CHARACTER  NO-UNDO.
 DEFINE VARIABLE lIgnoredIncludes AS LOGICAL    NO-UNDO.
 DEFINE VARIABLE iFileList AS INTEGER    NO-UNDO.
 DEFINE VARIABLE callbackClass AS CHARACTER NO-UNDO.
+DEFINE VARIABLE lClsRoot  AS LOGICAL    NO-UNDO.
 
 /* Handle to calling procedure in order to log messages */
 DEFINE VARIABLE hSrcProc AS HANDLE NO-UNDO.
@@ -181,6 +182,7 @@ PROCEDURE setOption.
     WHEN 'FILELIST':U         THEN ASSIGN iFileList = INTEGER(ipValue).
     WHEN 'NUMFILES':U         THEN ASSIGN iTotLines = INTEGER(ipValue).
     WHEN 'CALLBACKCLASS':U    THEN ASSIGN callbackClass = ipValue.
+	WHEN 'CLSROOT':U          THEN ASSIGN lClsRoot = (ipValue eq '1':U).
 
     OTHERWISE RUN logError IN hSrcProc (SUBSTITUTE("Unknown parameter '&1' with value '&2'" ,ipName, ipValue)).
   END CASE.
@@ -307,7 +309,7 @@ PROCEDURE compileXref.
   IF (opError) THEN RETURN.
   ASSIGN cSaveDir = (IF DestDir EQ ?
                        THEN ?
-                       ELSE (IF cFileExt = ".cls":U OR lRelative
+                       ELSE (IF ((lClsRoot AND cFileExt = ".cls":U) OR lRelative)
                                THEN outputDir
                                ELSE outputDir + '/':U + cBase)).
 

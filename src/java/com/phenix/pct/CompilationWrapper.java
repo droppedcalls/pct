@@ -319,6 +319,11 @@ public class CompilationWrapper extends PCT implements IRunAttributes, ICompilat
     public void setCallbackClass(String callback) {
         compAttributes.setCallbackClass(callback);
     }
+    
+    @Override
+    public void setCompileClsRelativeToRoot(boolean compileClsRelativeToRoot) {
+        compAttributes.setCompileClsRelativeToRoot(compileClsRelativeToRoot);
+    }
 
     // End of ICompilationAttributes methods
     // *************************************
